@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import HdContainer from './hd';
 import './App.css';
-
+import './bootstrap.min.css';
+import Hd2Container from './hd2';
+//{ //width:398px;height:auto;}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container body-container'>
+        {/* 헤드 시작 */}
+        <div className='row justify-content-start border-red '>
+          <HdContainer />
+          <Hd2Container />
+        </div>
+        {/* 헤드 끝 */}
     </div>
   );
 }
