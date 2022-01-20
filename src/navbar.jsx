@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
 
 const NavBar = () => {
 
     /* 메뉴 드롭다운 컨트롤 시작 */
-    let menuOriginal = [
+    let menuData = [
         { 
             'level1MenuName' : 'Start',
             'level1MenuNames' : [
@@ -84,12 +84,43 @@ const NavBar = () => {
             ]
         }
     ];
+    let [menu, setMenu] = useState(menuData);
+    let activeMenuIdx = useState(null);
 
-    let menuFilter = menuOriginal.map((menu, idx) => {
-        menu['dropdownOpen'] = false;
-        return menu;
-    })
-    console.log(menuFilter);
+    let useMenuEffect = useEffect(()=> {
+        let copyMenu = [...menuData];
+        let menu = copyMenu.map((menuItem, idx) => {
+            menuItem['dropdownOpen'] = false;
+            return menuItem;
+        })
+        setMenu(menu);
+    }, []);
+
+    let menuMouseOver = (prIdx) => {
+        console.log('prIdx', prIdx);
+        let copyMenu = [...menu];
+        let menu1 = copyMenu.map((menuItem, idx) => {
+            if(idx === prIdx){
+                console.log('같다');
+                menuItem['dropdownOpen'] = true;
+            }else{
+                menuItem['dropdownOpen'] = false;
+            }
+            
+            return menuItem;
+        })
+        console.log(menu1);
+        setMenu(menu1);
+    }
+
+    let menuMouseLeave = () => {
+        let copyMenu = [...menu];
+        let menu1 = copyMenu.map((menuItem, idx) => {
+            menuItem['dropdownOpen'] = false;
+            return menuItem;
+        })
+        setMenu(menu1);
+    }
     
     let [dropdownOpen, setDropdownOpen] = useState(true);
     let toggle = () => {
@@ -102,51 +133,47 @@ const NavBar = () => {
             <Nav 
             pills
             fill>
-                <Dropdown
-                nav
-                isOpen={dropdownOpen}
-                onMouseOver={ () => { toggle() } }
-                onMouseLeave={ () => { toggle() } }
-                >
-                <DropdownToggle
-                    caret
-                    nav
-                >
-                    Start
-                </DropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem>
-                        Enterainer
-                        </DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>
-                        Modal
-                        </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
+            { menu !== null
+              ? menu.map((menuItem,idx) => {
+                    return (
+                            <Dropdown
+                                nav
+                                isOpen={menuItem['dropdownOpen']}
+                                onMouseOver={ () => { menuMouseOver(idx) } }
+                                onMouseLeave={ () => { menuMouseLeave() } }
+                                key={ 'menu'+idx }
+                            >
+                            <DropdownToggle
+                                caret
+                                nav
+                            >
+                            {menuItem['level1MenuName']}
+                            </DropdownToggle>
+                                { 
+                                    menuItem['level1MenuNames'].length > 0 
+                                    ? (
+                                    <DropdownMenu className='wp-100'>
+                                        { menuItem['level1MenuNames'].map((menuItemLevel2, idx2) => {
 
-                <Dropdown
-                nav
-                isOpen={dropdownOpen}
-                onMouseOver={ () => { toggle() } }
-                onMouseLeave={ () => { toggle() } }
-                >
-                    <DropdownToggle
-                        caret
-                        nav
-                    >
-                        Beauty
-                    </DropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem>
-                         Hair
-                        </DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>
-                        Nail
-                        </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
+                                        })
+                                        }
+                                        <DropdownItem>
+                                        Enterainer
+                                        </DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem>
+                                        Modal
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                    )
+                                    : null
+                                }
+                                
+                            </Dropdown>
+                    )
+                })
+            : null
+        }
             </Nav>            
         </div>
     );
