@@ -144,7 +144,6 @@ const NavBar = () => {
                                 key={ 'menu'+idx }
                             >
                             <DropdownToggle
-                                caret
                                 nav
                             >
                             {menuItem['level1MenuName']}
