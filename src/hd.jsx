@@ -5,11 +5,11 @@ import react from "react";
 const HdContainer = () => {
 
     return (
-        <div className='col-12 top-menu '>
-            <div className='container'>
+        <div className='col-12 top-menu ps-0 pe-0'>
+            <div className='container  ps-0 pe-0'>
               <div className="row justify-content-between">
                 <div className="col-4">
-                      <ul className='tnb1'>
+                      <ul className='tnb1 ps-0'>
                         <li><a href='#'>시작페이지로 등록</a></li>
                         <li><a href='#'>즐겨찾기 추가</a></li>
                       </ul>

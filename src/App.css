@@ -44,7 +44,7 @@ li {list-style:none;}
 .tnb1 li{ float: left; margin-right: 10px;}
 .tnb1 a {display: inline-block;height: 28px;color: #7d7d7d;line-height: 2.4em;font-size: 0.7em;}
 
-.tnb2{ float: left;}
+.tnb2{ float: right;}
 .tnb2 li{ float: left; margin-right: 10px;}
 .tnb2 a {display: inline-block;height: 28px;color: #7d7d7d;line-height: 2.4em;font-size: 0.7em;}
 
