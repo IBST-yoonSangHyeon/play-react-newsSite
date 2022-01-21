@@ -6,7 +6,7 @@ const HdContainer = () => {
 
     return (
         <div className='col-12 top-menu '>
-            <div className='container border-black'>
+            <div className='container'>
               <div className="row justify-content-between">
                 <div className="col-4">
                       <ul className='tnb1'>

@@ -145,6 +145,8 @@ const NavBar = () => {
                             >
                             <DropdownToggle
                                 nav
+                                style={ {color : '#ffffff'} }
+                                className='a-text-decoration-line'
                             >
                             {menuItem['level1MenuName']}
                             </DropdownToggle>

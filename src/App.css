@@ -18,6 +18,7 @@ hr {display:none}
 pre {overflow-x:scroll;font-size:1.1em}
 a:link, a:visited {color:#000;text-decoration:none}
 a:hover, a:focus, a:active {color:#000;text-decoration:underline}
+.a-text-decoration-line:hover{text-decoration-line: none;}
 
 li {list-style:none;}
 .clear{ clear: both;}
