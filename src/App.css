@@ -55,4 +55,9 @@ li {list-style:none;}
 .btn-search-background{background-image: url(img/search.png);background-repeat: no-repeat;background-position: center;} 
 .news-list-font {font-size: 1px;text-align: right;}
 
+
+/* 바디-최상위 */
+
+
+.body-contents { margin-top: 30px;}
   
