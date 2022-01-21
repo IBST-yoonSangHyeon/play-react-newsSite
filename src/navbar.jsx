@@ -154,16 +154,15 @@ const NavBar = () => {
                                     ? (
                                     <DropdownMenu className='wp-100'>
                                         { menuItem['level1MenuNames'].map((menuItemLevel2, idx2) => {
-
+                                            console.log(menuItemLevel2);
+                                            return (
+                                                <DropdownItem>
+                                                    { menuItemLevel2 }
+                                                </DropdownItem>
+                                            )
                                         })
                                         }
-                                        <DropdownItem>
-                                        Enterainer
-                                        </DropdownItem>
-                                        <DropdownItem divider />
-                                        <DropdownItem>
-                                        Modal
-                                        </DropdownItem>
+
                                     </DropdownMenu>
                                     )
                                     : null
