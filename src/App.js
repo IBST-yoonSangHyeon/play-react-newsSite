@@ -3,6 +3,7 @@ import './App.css';
 import './bootstrap.min.css';
 import Hd2Container from './hd2';
 import NavBar from './navbar';
+import { useState } from 'react';
 
 //{ //width:398px;height:auto;}
 function App() {
@@ -58,6 +59,30 @@ function App() {
       subject : "LALISA' M/V"
     }
   ];
+
+  let initMov = {
+      imgSrc : "",
+      iframSrc : '',
+      subject : ""
+  }
+  let [movie, setMovie] = useState(initMov);
+
+  if(movie['imgSrc'] === ""){
+    movie['imgSrc'] = test_iframData[0]['imgSrc'];
+    movie['iframSrc'] =test_iframData[0]['iframSrc'];
+    movie['subject'] =test_iframData[0]['subject'];
+  }
+
+  let movieClick = (e) => {
+    console.log('e',e.currentTarget.dataset);
+    let changeMovieData = {
+                            imgSrc : e.currentTarget.dataset.imgSrc,
+                            iframSrc : e.currentTarget.dataset.iframSrc,
+                            subject : e.currentTarget.dataset.subject
+                          };
+    setMovie(changeMovieData);
+  }
+
   return (
     <div className='container body-container'>
         {/* 헤드 시작 */}
@@ -77,7 +102,12 @@ function App() {
             <div className='container border-blue'>
               <div className='row'>
                 <div className='col-8'  >
-                <iframe width="100%" height="415" src="https://www.youtube.com/embed/yghPuQnny24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                <iframe width="100%" 
+                        height="415" 
+                        src={movie['iframSrc']} 
+                        title={movie['subject']}
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                 </iframe>
                 </div>
                 <div className='col-4 '>
@@ -89,7 +119,7 @@ function App() {
                           if(iframItem['subject'].length > 30){
                             subject = iframItem['subject'].substring(0, 30)+'...'
                           }
-                          return  (<div className='container p-0 mt-1'>
+                          return  (<div className='container p-0 mt-1' data-ifram-src={iframItem['iframSrc']} data-img-src={iframItem['imgSrc']} data-title={iframItem['subject']} onClick={(e) => {movieClick(e);}}>
                                       <div className='row'>
                                         <div className='col-7'>
                                           <img src={ iframItem['imgSrc'] } style={ { maxWidth: '100%', width: '100%' }}/>
