@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hd2Container = () => {
     return (
-            <div className='col-12 hd-wrapper'>
+            <div className='col-12 hd-wrapper mb-1'>
                 <div className='container'>
                     <div className='row justify-content-between'>
                     {/* 왼쪽 로고 시작 */}
