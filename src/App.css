@@ -20,6 +20,21 @@ a:link, a:visited {color:#000;text-decoration:none}
 a:hover, a:focus, a:active {color:#000;text-decoration:underline}
 .a-text-decoration-line:hover{text-decoration-line: none;}
 
+.text-left { text-align: left;}
+.text-right { text-align: right;}
+.font-weght-bold {font-weight: bold;}
+.font-size-20 {font-size: 20px;}
+
+.border-top-style { border-top-style: solid;}
+.border-bottom-style { border-bottom-style: solid;}
+.border-left-style { border-left-style: solid;}
+.border-right-style { border-right-style: solid;}
+
+.border-top-thick { border-top-width: thick;}
+.border-bottom-thick {border-bottom-width: thick;}
+.border-left-thick { border-left-width: thick;}
+.border-right-thick { border-right-width: thick;}
+
 li {list-style:none;}
 .clear{ clear: both;}
 
