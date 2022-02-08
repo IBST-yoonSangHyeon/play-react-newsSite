@@ -12,7 +12,7 @@ const LeftBox = memo(({data}) => {
             <>
                 {/* left box wrap 시작 */}
                 <div className={'container ' + (data.backGroundColor ? styles.background: '')} >
-                { data.boxHeader &&  <BoxHeader />}
+                { data.boxHeader &&  <BoxHeader boxHeaderSubject={data.boxHeaderSubject}/>}
                 {/* left box 시작 */}
                 { 
                     data.data.length === 0 
@@ -20,10 +20,10 @@ const LeftBox = memo(({data}) => {
                     : ( data.data.map((item, idx) => {
                             return (
                                 <div className='row'>
-                                    <div className='col-4 mb-1' style={{width : item.imgCSS.imgWidth, height : item.imgCSS.imgHeight}}>
+                                    <div className={ item.imgCSS.imgCol+' mb-1'} style={{width : item.imgCSS.imgWidth, height : item.imgCSS.imgHeight}}>
                                         <BoxImg imgUrl={item.imgUrl}/>
                                     </div>
-                                    <div className='col-8 '>
+                                    <div className={ item.contentCSS.contentCol }>
                                         <BoxContent subject={item.subject} content={item.content}/>
                                     </div>
                                 </div>
