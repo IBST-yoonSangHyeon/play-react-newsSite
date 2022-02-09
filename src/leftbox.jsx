@@ -11,7 +11,7 @@ const LeftBox = memo(({data}) => {
     return (
             <>
                 {/* left box wrap 시작 */}
-                <div className={'container ' + (data.backGroundColor ? styles.background: '')} >
+                <div className={'container p-0 ms-1 me-1' + (data.backGroundColor ? styles.background: '')} >
                 { data.boxHeader &&  <BoxHeader boxHeaderSubject={data.boxHeaderSubject}/>}
                 {/* left box 시작 */}
                 { 
